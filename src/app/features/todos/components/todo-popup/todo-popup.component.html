@@ -1,0 +1,86 @@
+<div
+  class="modal fade show"
+  tabindex="-1"
+  role="dialog"
+  style="display: block; background-color: rgba(0, 0, 0, 0.5);"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <span *ngIf="isCreateMode()">Create To-Do</span>
+          <span *ngIf="isEditMode()">Edit To-Do</span>
+          <span *ngIf="isViewMode()">To-Do Details</span>
+        </h5>
+        <button
+    type="button"
+    class="btn-close"
+    (click)="onClose()"
+    aria-label="Close"
+  >
+    <i class="fa fa-times"></i>
+  </button>
+      </div>
+      <div class="modal-body">
+        <form *ngIf="!isViewMode()" (submit)="onSave()">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input
+              id="title"
+              name="title"
+              [(ngModel)]="title"
+              class="form-control"
+              [readonly]="isViewMode()"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              [(ngModel)]="description"
+              class="form-control"
+              [readonly]="isViewMode()"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select
+              id="status"
+              name="status"
+              [(ngModel)]="status"
+              class="form-control"
+              [disabled]="isViewMode()"
+            >
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+        </form>
+        <div *ngIf="isViewMode()">
+          <p><strong>Title:</strong> {{ title }}</p>
+          <p><strong>Description:</strong> {{ description }}</p>
+          <p><strong>Status:</strong> {{ status }}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="onClose()"
+        >
+          Close
+        </button>
+        <button
+          *ngIf="!isViewMode()"
+          type="button"
+          class="btn btn-primary"
+          (click)="onSave()"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

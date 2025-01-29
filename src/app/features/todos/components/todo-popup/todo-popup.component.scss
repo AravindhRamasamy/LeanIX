@@ -1,0 +1,34 @@
+.curved-heading {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #007bff;
+    transform: rotate(-10deg); 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .btn-close {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .btn-close:hover {
+    color: darkred;
+  }
+  
+  .btn-close i {
+    pointer-events: none; 
+  }
+  
